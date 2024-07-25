@@ -2,3 +2,111 @@ $font-family: 'Lato', Arial, Helvetica, sans-serif;
 $green: #03a84e;
 $text-black: #373737;
 $text-gray: #9C9AA6;
+$background-color: #000;
+$circle-color: #fff;
+$arrow-color: #888;
+$arrow-size: 20px;
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @mixin outer__container {
+    position: relative;
+    height: 620px;
+    width:100%;
+    background-color: #FAFAFA;
+    @include flex-center;
+    overflow:hidden !important ;
+  }
+
+  @mixin custom__arrow($color,$size,$weight) {
+    .arrow {
+  border: solid $color;
+  border-width: 0 $weight $weight 0;
+  display: inline-block;
+  padding: $size;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+  }
+
+  @mixin searchbar__container($margin-left,$width){
+    margin: 0 0 74px $margin-left !important;
+    width: $width; 
+    height: 60px;
+    position: relative;
+  }
+
+  @mixin clear__input($right,$top){
+    position: absolute;
+    right: $right;
+    top: $top;
+  }
+
+  @mixin category__grid($position-top, $margin-right, $width, $col-gap) {
+      position: absolute;
+      top: $position-top;
+      margin: 0 $margin-right 0 $margin-right; // No prefix needed for margin
+      width: $width;
+      min-height: 461px;
+  
+      // Flexbox properties with prefixes
+      display: -webkit-box; 
+      display: -moz-box;   
+      display: -ms-flexbox; 
+      display: -webkit-flex; 
+      display: flex;        
+      
+      -webkit-flex-wrap: wrap; 
+      -moz-flex-wrap: wrap;    
+      -ms-flex-wrap: wrap;     
+      flex-wrap: wrap;         
+
+      -webkit-box-pack: start; 
+      -moz-box-pack: start;    
+      -ms-flex-pack: start;    /* IE 10 */
+      justify-content: flex-start; /* Standard syntax */
+
+      -webkit-box-align: start; 
+      -moz-box-align: start;    
+      -ms-flex-align: start;    /* IE 10 */
+      align-items: flex-start;  /* Standard syntax */
+      
+
+      & > * {
+
+        /* Fallback for calc() */
+        @supports (-webkit-appearance: none) {
+          width: calc((100% / 3) - #{$col-gap});
+        }
+        @supports not (-webkit-appearance: none) {
+          width: 30%; 
+        }
+        
+        /* Fallback for gap */
+        margin-right: $col-gap; // Adjust margin for gap fallback
+        margin-bottom: $col-gap;
+        
+        height: 220px;
+        box-sizing: border-box;
+
+        -webkit-box-flex: 0; 
+        -moz-box-flex: 0;   
+        -ms-flex: 0 0 auto;  
+        flex: 0 0 auto;      /* Standard syntax */
+    }
+  
+  }
+  
+  
