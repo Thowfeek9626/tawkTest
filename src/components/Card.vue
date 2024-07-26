@@ -1,6 +1,7 @@
 <template>
     <div class="innerCard">
-            <i :class="`fa card-icon fa-3x fa-${cardData.icon}`" aria-hidden="true"></i> <!-- Replace with actual icon or image -->
+        <!-- <i v-if="cardData.icon ==='comment'" :class="`fa card-icon fa-3x fa-${cardData.icon}`" aria-hidden="true"></i>  -->
+        <img :src="iconPath" alt="Category-Image" />
         <h3 class="title">{{ cardData.title }}</h3>
         <p class="article__count">{{ cardData.totalArticle }}{{ cardData.totalArticle === 1 ?' article':' articles' }}</p>
         <p class="last__update">{{ formatDate(cardData.updatedOn) }}&nbsp;days ago</p>
@@ -22,6 +23,12 @@ methods:{
         const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
         return Math.floor(diffInDays)   
     }
+},
+computed:{
+    iconPath() {
+      return require(`../assets/icons/${this.cardData.icon}.svg`);
+    }
+
 }
 }
 </script>
@@ -29,13 +36,12 @@ methods:{
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
 .innerCard{
- height: 149px;
- width: 250px;
- text-align: center;
+    height: 149px;
+    width: 250px;
+    text-align: center;
 
  .card-icon {
-      background-color: transparent;
-      color: #e5f4e4;
+    @include stroke__width__category();
   }
   .title{
       font-family: $font-family;
@@ -58,11 +64,6 @@ methods:{
       color: #9C9AA6;
   }
 }
-
-.fa{
-color: #e5f4e4;
--webkit-text-stroke-width: 2px;
--webkit-text-stroke-color: #03a84e;
-}
-
 </style>
+
+

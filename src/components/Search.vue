@@ -7,10 +7,11 @@
               <span v-if="query.length > 0">
                   <i class="fa fa-times fa-xs clearInput" aria-hidden="true" @click="clearQuery()"></i>
               </span>
-              <form class="form" action="/action_page.php" style="max-width:100%">
+              <form class="form" style="max-width:100%">
                   <input v-model="query" @input="debouncedSearch" type="text" placeholder="Search for answers" name="search2">
-                  <button type="submit">
-                      <i class="fa fa-search fa-lg"></i>
+                  <button @click="handleSearch($event)">
+                      <!-- <i class="fa fa-search fa-lg"></i> -->
+                      <img src="../assets/icons/search.png" alt="CategoryImage" />
                   </button>
               </form>
           </div>
@@ -32,6 +33,11 @@
       this.debouncedSearch = _.debounce(this.emitSearchEvent, 300);
     },
       methods:{
+        handleSearch(e){
+            console.log(e)
+            e.target.preventDefault
+            this.debouncedSearch()
+        },
           emitSearchEvent(){
               console.log('eventEmitted',this.query,"-------------")
               this.$emit("searchEvent",this.query)

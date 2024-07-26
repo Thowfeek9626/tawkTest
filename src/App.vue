@@ -1,10 +1,6 @@
 <template>
 	<div>
-		<i class="fa fa-2x fa-home"></i>
-		<!-- <v-icon x-large>home</v-icon>
-		<img width="190px" src="./assets/fonts/search (1).png"/> -->
-
-		<!-- <tawk-header></tawk-header> -->
+		<tawk-header></tawk-header>
 		<router-view/>
 	</div>
 </template>

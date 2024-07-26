@@ -1,7 +1,9 @@
 <template>
     <div class="article__container">
       <div class="article__icon">
-          <i class="fas fa-lg fa-file-alt"></i>
+          <!-- <i class="fas fa-lg fa-file-alt"></i> -->
+        <img src="../assets/icons/file-text.svg" alt="Article-Image" />
+
           <!-- <i class="fa fa-file-text-o" aria-hidden="true"></i> -->
       </div>
       <div class="article__detail">
@@ -14,7 +16,9 @@
         <div class="next__icon">
           <!-- <i class="fas fa fa-angle-right fa-lg"></i> -->
           <div class="next__category">
-              <i class="arrow right"></i>
+              <!-- <i class="arrow right"></i> -->
+        <img src="../assets//icons/next_green.svg" alt="Next" />
+
             </div>
         </div>
       </div>
@@ -41,7 +45,7 @@
         @import '../scss/_variables.scss';
       .article__container{
           width: 640px;
-          height: 91.54px;
+          height: 89.54px;
           border: 1px solid #EEEEEE;
           margin-bottom: 17.52px;
           position: relative;
@@ -55,9 +59,7 @@
               height: 19.9px;
           }
         .fas{
-          color: #ffffff;
-          -webkit-text-stroke-width: 1px;
-          -webkit-text-stroke-color: #03a84e;
+          @include stroke__width__article();
         }
         .article__detail{
           margin: 0;

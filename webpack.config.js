@@ -16,10 +16,10 @@ module.exports = {
       {
         test: /\.(ttf|eot|woff|woff2)$/,
         use: {
-          loader: 'url-loader',
+          loader: 'file-loader', // Using file-loader instead of url-loader
           options: {
             name: '[name].[ext]',
-            outputPath: 'assets/fonts/', // Ensure this matches your project's structure
+            outputPath: 'assets/fonts/',
           },
         },
       },
@@ -50,8 +50,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/images/',
-              publicPath: 'assets/images/',
+              // outputPath: 'assets/images/'
+              // publicPath: 'assets/images/',
             },
           },
         ],
