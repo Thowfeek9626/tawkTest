@@ -1,5 +1,5 @@
 <template>
-    <div style="overflow-y: hidden !important;">
+    <div style="overflow-y: hidden !important;" class="home__page">
       <Search @searchEvent="onCategorySearch"/>
       <div class="outer__container">
             <div class="category__grid">
@@ -31,8 +31,10 @@
           selectedCategory:{}
         }
       },
-      async mounted(){
-      await this.getData()
+      created: async function() {
+        await this.getData()
+      },
+      mounted(){
       this.updateViewportWidth();
       window.addEventListener('resize', this.updateViewportWidth);
       },
@@ -41,14 +43,13 @@
   },
       methods: {
         updateViewportWidth() {
+          console.log("111111111111111")
           const element = document.querySelector(".category__grid")
           const width = element.clientWidth
           const positionLeft = (window.innerWidth - width)/2
           console.log(positionLeft,"positionLeft")
           element.style.position = 'absolute'
           element.style.left = `${positionLeft}px`
-          document.documentElement.style.setProperty('--position-left', `${positionLeft}px`);
-
     },
           onCategorySearch($event){
               this.searchQuery = $event
@@ -62,13 +63,15 @@
       },
       computed:{
           computedCategories(){
+            let filteredCategory;
               if(this.searchQuery && this.searchQuery.length > 0){
-                  let filteredCategory = this.categories.filter((category)=>{
+                  filteredCategory = this.categories.filter((category)=>{
                       return category.title.toLowerCase().includes(this.searchQuery.toLowerCase())
                   })
-                  return filteredCategory
+              }else{
+                filteredCategory = this.categories
               }
-              return this.categories.length > 0 ? this.categories.sort((a, b) => a.order - b.order) : [];
+              return filteredCategory.length > 0 ? filteredCategory.sort((a, b) => a.order - b.order) : [];
           }
       }
     }
@@ -76,20 +79,23 @@
   
   <style lang="scss" scoped>
   @import '../scss/_variables.scss';
-
+  .home__page{
+    @include flex(center,center,column);
+  }
   .outer__container {
     height: 620px;
     @include outer__container;
-    @include flex__center;
+    @include flex(center,center);
     align-items: center;
     overflow:hidden ;
     .category__grid {
-      @include category__grid (60px,11.52vw,985px,20px);
+      @include category__grid (60px,11.52vw,76.95vw,985px,20px);
       .category__router {
+        border: 1px solid #EEEEEE;
         @include remove_default_styles;
-        height: 100% !important;
-        width: 100%;
-        @include flex__center;
+        height: 220px !important;
+        width: 313px;
+        @include flex(center,center);
         background: white;
         cursor: pointer;
         &:hover{
@@ -98,5 +104,37 @@
       }
     }
   }
+
+  @media screen and (max-width:663px){
+    .outer__container{
+      height: 1512px !important;
+      .category__grid{
+        margin-right:0 !important;
+        .category__router{
+          width: 463px !important;
+        }
+      }
+    }
+  }
+  @media (min-width: 663px) and (max-width:870px){
+    .outer__container{
+      height: 1512px !important;
+      .category__grid{
+        .category__router{
+          width: 463px !important;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 870px) and (max-width:992px) {
+    .outer__container{
+      height: 820px !important;
+    }
+  }
+
+  // @media screen and (min-width:992px) {
+    
+  // }
   
   </style>

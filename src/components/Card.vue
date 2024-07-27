@@ -1,7 +1,7 @@
 <template>
     <div class="innerCard">
         <!-- <i v-if="cardData.icon ==='comment'" :class="`fa card-icon fa-3x fa-${cardData.icon}`" aria-hidden="true"></i>  -->
-        <img :src="iconPath" alt="Category-Image" />
+        <img :src="iconPath" alt="Category-Image" class="card-icon"/>
         <h3 class="title">{{ cardData.title }}</h3>
         <p class="article__count">{{ cardData.totalArticle }}{{ cardData.totalArticle === 1 ?' article':' articles' }}</p>
         <p class="last__update">{{ formatDate(cardData.updatedOn) }}&nbsp;days ago</p>
@@ -28,7 +28,6 @@ computed:{
     iconPath() {
       return require(`../assets/icons/${this.cardData.icon}.svg`);
     }
-
 }
 }
 </script>
@@ -41,7 +40,7 @@ computed:{
     text-align: center;
 
  .card-icon {
-    @include stroke__width__category();
+    border: none !important;
   }
   .title{
       font-family: $font-family;

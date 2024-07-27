@@ -97,12 +97,6 @@
           top: 37.59px;
           width: 16.79px;
           height: 8.44px;
-          .fas{
-              color: #03a84e;
-              // -webkit-text-stroke-width: 0.5px;
-              -webkit-text-stroke-color: #03a84e;
-          }
-            @include custom__arrow(#03a84e,6px,3px)
       }
   
       }

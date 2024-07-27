@@ -41,4 +41,20 @@ export default {
 			}
 		}
 	}
+	@media (min-width:583px) and (max-width:686px){
+		h1{
+			font-size: 30px !important;
+		}
+		h3{
+			font-size: 16px !important;
+		}
+	}
+	@media screen and (max-width:583px) {
+		h1{
+			font-size: 27px !important;
+		}
+		h3{
+			font-size: 12px !important;
+		}
+	}
 </style>
