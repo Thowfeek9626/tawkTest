@@ -1,6 +1,5 @@
 <template>
     <div class="innerCard">
-        <!-- <i v-if="cardData.icon ==='comment'" :class="`fa card-icon fa-3x fa-${cardData.icon}`" aria-hidden="true"></i>  -->
         <img :src="iconPath" alt="Category-Image" class="card-icon"/>
         <h3 class="title">{{ cardData.title }}</h3>
         <p class="article__count">{{ cardData.totalArticle }}{{ cardData.totalArticle === 1 ?' article':' articles' }}</p>
@@ -33,36 +32,8 @@ computed:{
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/_variables.scss';
-.innerCard{
-    height: 149px;
-    width: 250px;
-    text-align: center;
-
- .card-icon {
-    border: none !important;
-  }
-  .title{
-      font-family: $font-family;
-      font-size: 20px;
-      line-height: 24px;
-      margin: 20px 0 21px 0;
-  }
-  .article__count {
-      font-size: 13px;
-      font-family: $font-family;
-      line-height: 15.6px;
-      color: #03A84E;
-      margin: 0;
-  }
-  .last__update {
-      font-size: 11px;
-      font-family: $font-family;
-      line-height: 13.2px;
-      margin: 0;
-      color: #9C9AA6;
-  }
-}
+ @import '../scss/_variables.scss';
+ @include inner__card();
 </style>
 
 

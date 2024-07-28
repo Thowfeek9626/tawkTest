@@ -32,6 +32,7 @@
 		"babel-polyfill": "^6.26.0",
 		"core-js": "^2.6.12",
 		"regenerator-runtime": "^0.14.1",
+		"smoothscroll-polyfill": "^0.4.4",
 		"vue": "^2.6.11",
 		"whatwg-fetch": "^3.6.20"
 	},
